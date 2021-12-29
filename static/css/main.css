@@ -89,6 +89,7 @@ a:active, a:hover, a {
 	font-size: 0.9rem;
 	line-height: 36px;
 	cursor: pointer;
+	border: none;
 }
 
 .button:hover { color: var(--color-white); }
@@ -158,7 +159,8 @@ a:active, a:hover, a {
 	text-align: center;
 	cursor: pointer;
 	font-size: 0.9rem;
-
+	border: none;
+	height: 36px;
 	margin-left: 20px;
 }
 

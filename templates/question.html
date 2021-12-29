@@ -73,10 +73,24 @@
 {% include "incl/pagination.html" %}
 
 <div class="content-block">
-	<div class="form-floating ans-form">
-		<textarea class="form-control" placeholder="Leave a comment here" maxlength="500" id="floatingTextarea2" style="height: 150px"></textarea>
-		<label for="floatingTextarea2">Comment</label>
-	</div>
-	<div class="button ans-button">Answer</div>
+	<form action="{% url "question" content.id %}" method="post">
+		{% csrf_token %}
+		{% if form.is_valid == False and form.is_bound == True %}
+			<div class="alert alert-danger alert-dismissible fade show" role="alert">
+				<strong>
+					{{ form.non_field_errors.0 }}
+					{{ form.text.errors.0 }}
+				</strong>
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+		{% endif %}
+		
+		<div class="form-floating ans-form">
+			<input id="{{ form.question_id.id_for_label }}" type="hidden" name="question_id" value="{{ content.id }}"></input>
+			{{ form.text }}
+			<label for="{{ form.text.id_for_label }}">Comment</label>
+		</div>
+		<button type="sumbit" class="button ans-button">Answer</button>
+	</form>
 </div>
 {% endblock content %}

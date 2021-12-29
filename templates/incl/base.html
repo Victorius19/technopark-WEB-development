@@ -28,18 +28,31 @@
 
 					<div class="header-border"></div>
 
-					<div class="user">
-						<img height="36" width="36" src="{% static "img/my-avatar.png" %}" class="user-avatar" alt="User avatar on site header">
-						<div class="user-name">Dr. Pepper</div>
-					</div>
+					{% if request.user.is_authenticated %}
+						<div class="user">
+							<img height="36" width="36" src="{% static "img/my-avatar.png" %}" class="user-avatar" alt="User avatar on site header">
+							<div class="user-name">{{ request.user.profile.nickname }}</div>
+						</div>
 
-					<a href="{% url "settings" %}" class="header-icon settings">
-						<i class="fas fa-cog"></i>
-					</a>
+						<a href="{% url "settings" %}" class="header-icon settings">
+							<i class="fas fa-cog"></i>
+						</a>
 
-					<a href="../" class="header-icon bg-lightblue">
-						<i class="fas fa-sign-out-alt"></i>
-					</a>
+						<form action="{% url "index" %}" method="post">
+							{% csrf_token %}
+							<button type="sumbit" class="header-icon bg-lightblue">
+								<i class="fas fa-sign-out-alt"></i>
+							</button>
+						</form>
+					{% else %}
+						<a href="{% url "signup" %}" class="header-icon settings">
+							<i class="fas fa-user-plus"></i>
+						</a>
+						
+						<a href="{% url "login" %}" class="header-icon bg-lightblue">
+							<i class="fas fa-sign-in-alt"></i>
+						</a>
+					{% endif %}
 				</div>
 			</div>
 		</div>

@@ -7,20 +7,28 @@
 </div>
 
 <div class="content-block">
-	<div class="alert alert-danger alert-dismissible fade show" role="alert">
-		<strong>Sorry, wrong password!</strong>
-		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-	</div>
+	<form action="{% url "login" %}" method="post">
+		{% csrf_token %}
+		{% if form.is_valid == False and form.is_bound == True %}
+			<div class="alert alert-danger alert-dismissible fade show" role="alert">
+				<strong>
+					{{ form.non_field_errors.0 }} {{ form.username.errors.0 }} {{ form.password.errors.0 }}
+				</strong>
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+		{% endif %}
+		
+		<div class="form-floating mb-3">
+			{{ form.username }}
+			<label for="{{ form.username.id_for_label }}">Login</label>
+		</div>
+		
+		<div class="form-floating mb-3">
+			{{ form.password }}
+			<label for="{{ form.password.id_for_label }}">Password</label>
+		</div>
 
-	<div class="form-floating mb-3">
-		<input type="text" class="form-control" id="floatingInput" placeholder="Enter you login here">
-		<label for="floatingInput">Login</label>
-	</div>
-	<div class="form-floating mb-3">
-		<input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-		<label for="floatingPassword">Password</label>
-	</div>
-
-	<div class="button">Log in!</div>
+		<button type="sumbit" class="button">Log in!</button>
+	</form>
 </div>
 {% endblock content %}

@@ -7,23 +7,30 @@
 </div>
 
 <div class="content-block">
-	<div class="alert alert-danger alert-dismissible fade show" role="alert">
-		<strong>Wrong tags!</strong> Tags must be separated by commas.
-		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-	</div>
+	<form action="{% url "ask" %}" method="post">
+		{% csrf_token %}
+		{% if form.is_valid == False and form.is_bound == True %}
+			<div class="alert alert-danger alert-dismissible fade show" role="alert">
+				<strong>
+					{{ form.non_field_errors.0 }} {{ form.title.errors.0 }} {{ form.text.errors.0 }} {{ form.tags.errors.0 }}
+				</strong>
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+			</div>
+		{% endif %}
 
-	<div class="mb-3">
-		<label for="exampleFormControlInput1" class="form-label">Title</label>
-		<input class="form-control" maxlength="50" type="text" placeholder="Comment title" aria-label="default input example">
-	</div>
-	<div class="mb-3">
-		<label for="exampleFormControlTextarea1" class="form-label">Comment text</label>
-		<textarea class="form-control" maxlength="500" id="exampleFormControlTextarea1" rows="3"></textarea>
-	</div>
-	<div class="mb-3">
-		<label for="exampleFormControlInput1" class="form-label">Tags</label>
-		<input class="form-control" maxlength="100" type="text" placeholder="Tags must be separated by commas" aria-label="default input example">
-	</div>
-	<div class="button">Aks!</div>
+		<div class="mb-3">
+			<label for="" class="form-label">Title</label>
+			{{ form.title }}
+		</div>
+		<div class="mb-3">
+			<label for="" class="form-label">Comment text</label>
+			{{ form.text }}
+		</div>
+		<div class="mb-3">
+			<label for="" class="form-label">Tags</label>
+			{{ form.tags }}
+		</div>
+		<button class="button" type="sumbit">Aks!</button>
+	</form>
 </div>
 {% endblock content %}
