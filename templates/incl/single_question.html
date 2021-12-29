@@ -1,0 +1,33 @@
+{% load static %}
+
+<div class="question-block">
+	<div class="que-title-text">
+		<div class="que-rate">
+			<img height="60" width="60" src="{% static "img/my-avatar-72.png" %}" class="user-avatar" alt="User avatar on site comment">
+			<div class="only-rate">
+				<i class="fas fa-angle-up"></i>
+				<span>{{ question.rate }}</span>
+				<i class="fas fa-angle-down"></i>
+			</div>
+		</div>
+
+		<div class="que-text-block">
+			<a href="{% url "question" question.id %}" class="que-title">{{ question.title }}</a>
+			<p class="que-text">
+				{{ question.text }}
+			</p>
+			<div class="que-tags">
+				{% for tag in question.tags.all %}
+					<a href="{% url "tag" tag %}" class="que-tag">{{ tag }}</a>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+
+	<div>
+		<div class="que-answ-count">
+			<p class="que-answ">{{ question.comments.count }}</p>
+			<p class="que-answ-text">answers</p>
+		</div>
+	</div>
+</div>

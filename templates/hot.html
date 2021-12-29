@@ -1,0 +1,18 @@
+{% extends 'incl/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="content-block title-block">
+	<div class="title-text">{{ title }}</div>
+	<a href="{% url "index" %}" class="title-also">View new questions <i class="fas fa-angle-right"></i></a>
+</div>
+
+<div class="content-block questions">
+	{% for question in questions %}
+		{% include "incl/single_question.html" %}
+	{% endfor %}
+</div>
+
+{% include "incl/pagination.html" %}
+
+{% endblock content %}

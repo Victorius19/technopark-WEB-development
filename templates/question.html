@@ -1,0 +1,82 @@
+{% extends 'incl/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="content-block questions">
+	<div class="question-block">
+		<div class="que-title-text">
+			<div class="que-rate">
+				<img height="60" width="60" src="{% static "img/my-avatar-72.png" %}" class="user-avatar" alt="User avatar on site comment">
+				<div class="only-rate">
+					<i class="fas fa-angle-up"></i>
+					<span>{{ content.rate }}</span>
+					<i class="fas fa-angle-down"></i>
+				</div>
+			</div>
+
+			<div class="que-text-block">
+				<h1 class="que-title">{{ content.title }}</h1>
+				<p class="que-text que-page-text">
+					{{ content.text }}
+				</p>
+				<div class="que-tags">
+					{% for tag in content.tags.all %}
+						<a href="{% url "tag" tag %}" class="que-tag">{{ tag }}</a>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+
+		<div>
+			<div class="que-answ-count">
+				<p class="que-answ">{{ content.comments.all.count }}</p>
+				<p class="que-answ-text">answers</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="content-block questions">
+	{% for comment in questions %}
+		<div class="question-block">
+			<div class="que-title-text">
+				<div class="que-rate">
+					<img height="40" width="40" src="{% static "img/cat.png" %}" class="user-avatar" alt="User avatar on site comment">
+				</div>
+
+				<div class="que-text-block">
+					<p class="que-text que-page-text">
+						{{ comment.text }}
+					</p>
+					<div class="que-tags">
+						<div class="que-tag answer-tag">
+							<div class="form-check">
+								<input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+								<label class="form-check-label" for="flexCheckDefault">Correct!</label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div>
+				<div class="only-rate answer-rate">
+					<i class="fas fa-angle-up"></i>
+					<span>{{ comment.rate }}</span>
+					<i class="fas fa-angle-down"></i>
+				</div>
+			</div>
+		</div>
+	{% endfor %}
+</div>
+
+{% include "incl/pagination.html" %}
+
+<div class="content-block">
+	<div class="form-floating ans-form">
+		<textarea class="form-control" placeholder="Leave a comment here" maxlength="500" id="floatingTextarea2" style="height: 150px"></textarea>
+		<label for="floatingTextarea2">Comment</label>
+	</div>
+	<div class="button ans-button">Answer</div>
+</div>
+{% endblock content %}

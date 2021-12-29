@@ -1,0 +1,26 @@
+{% extends 'incl/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="content-block title-block">
+	<div class="title-text">Log in</div>
+</div>
+
+<div class="content-block">
+	<div class="alert alert-danger alert-dismissible fade show" role="alert">
+		<strong>Sorry, wrong password!</strong>
+		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
+
+	<div class="form-floating mb-3">
+		<input type="text" class="form-control" id="floatingInput" placeholder="Enter you login here">
+		<label for="floatingInput">Login</label>
+	</div>
+	<div class="form-floating mb-3">
+		<input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+		<label for="floatingPassword">Password</label>
+	</div>
+
+	<div class="button">Log in!</div>
+</div>
+{% endblock content %}

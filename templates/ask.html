@@ -1,0 +1,29 @@
+{% extends 'incl/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="content-block title-block">
+	<div class="title-text">New question</div>
+</div>
+
+<div class="content-block">
+	<div class="alert alert-danger alert-dismissible fade show" role="alert">
+		<strong>Wrong tags!</strong> Tags must be separated by commas.
+		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+	</div>
+
+	<div class="mb-3">
+		<label for="exampleFormControlInput1" class="form-label">Title</label>
+		<input class="form-control" maxlength="50" type="text" placeholder="Comment title" aria-label="default input example">
+	</div>
+	<div class="mb-3">
+		<label for="exampleFormControlTextarea1" class="form-label">Comment text</label>
+		<textarea class="form-control" maxlength="500" id="exampleFormControlTextarea1" rows="3"></textarea>
+	</div>
+	<div class="mb-3">
+		<label for="exampleFormControlInput1" class="form-label">Tags</label>
+		<input class="form-control" maxlength="100" type="text" placeholder="Tags must be separated by commas" aria-label="default input example">
+	</div>
+	<div class="button">Aks!</div>
+</div>
+{% endblock content %}

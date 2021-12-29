@@ -1,0 +1,120 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>AskIvanov</title>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+	<link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
+	<link href="{% static "fontawesome/css/all.css" %}" rel="stylesheet">
+
+	<link href="{% static "css/main.css" %}" rel="stylesheet">
+</head>
+<body>
+	<header class="header">
+		<div class="header-container container-xl">
+			<div class="header-block">
+				<a href="{% url "index" %}" class="logo"><span class="color-darkblue">Ask</span>Victor</a>
+				<div class="main-header">
+					<form class="header-form">
+						<input type="text" class="header-input" placeholder="Search">
+						<i class="fas fa-search"></i>
+					</form>
+					<a href="{% url "ask" %}" class="button">Ask!</a>
+
+					<div class="header-border"></div>
+
+					<div class="user">
+						<img height="36" width="36" src="{% static "img/my-avatar.png" %}" class="user-avatar" alt="User avatar on site header">
+						<div class="user-name">Dr. Pepper</div>
+					</div>
+
+					<a href="{% url "settings" %}" class="header-icon settings">
+						<i class="fas fa-cog"></i>
+					</a>
+
+					<a href="../" class="header-icon bg-lightblue">
+						<i class="fas fa-sign-out-alt"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<div class="container container-xl">
+		<div class="row">
+			<div class="col-9 content">
+				{% block content %}
+				{% endblock content %}
+			</div>
+			<div class="col-3">
+				<div class="content-block popular-things">
+					<div class="popular-header">Popular tags</div>
+					<div class="popular-body">
+						<div class="popular-tag">perl</div>
+						<div class="popular-tag">python</div>
+						<div class="popular-tag">TechnoPark</div>
+						<div class="popular-tag">MySQL</div>
+						<div class="popular-tag">django</div>
+						<div class="popular-tag">mail.ru</div>
+						<div class="popular-tag">Voloshin</div>
+						<div class="popular-tag">Firefox</div>
+					</div>
+				</div>
+
+				<div class="content-block popular-things">
+					<div class="popular-header">Best members</div>
+					<div class="popular-user-body">
+						<div class="popular-user">
+							<div class="user">
+								<img height="36" width="36" src="{% static "img/my-avatar.png" %}" class="user-avatar" alt="User avatar on site header">
+								<div class="user-name">Mr. Freeman</div>
+							</div>
+
+							<a href="../" class="title-also">View <i class="fas fa-angle-right"></i></a>
+						</div>
+						<div class="popular-user">
+							<div class="user">
+								<img height="36" width="36" src="{% static "img/cat.png" %}" class="user-avatar" alt="User avatar on site header">
+								<div class="user-name">Dr. House</div>
+							</div>
+
+							<a href="../" class="title-also">View <i class="fas fa-angle-right"></i></a>
+						</div>
+						<div class="popular-user">
+							<div class="user">
+								<img height="36" width="36" src="{% static "img/my-avatar.png" %}" class="user-avatar" alt="User avatar on site header">
+								<div class="user-name">Bender</div>
+							</div>
+
+							<a href="../" class="title-also">View <i class="fas fa-angle-right"></i></a>
+						</div>
+						<div class="popular-user">
+							<div class="user">
+								<img height="36" width="36" src="{% static "img/cat.png" %}" class="user-avatar" alt="User avatar on site header">
+								<div class="user-name">Queen Victoria</div>
+							</div>
+
+							<a href="../" class="title-also">View <i class="fas fa-angle-right"></i></a>
+						</div>
+						<div class="popular-user">
+							<div class="user">
+								<img height="36" width="36" src="{% static "img/my-avatar.png" %}" class="user-avatar" alt="User avatar on site header">
+								<div class="user-name">V. Pupkin</div>
+							</div>
+
+							<a href="../" class="title-also">View <i class="fas fa-angle-right"></i></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="{% static "/bootstrap/js/bootstrap.min.js" %}"></script>
+</body>
+</html>

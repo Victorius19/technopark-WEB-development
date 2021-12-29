@@ -1,0 +1,30 @@
+{% extends 'incl/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="content-block title-block">
+	<div class="title-text">Settings: Dr. Pepper</div>
+</div>
+
+<div class="content-block">
+	<div class="mb-3">
+		<label for="exampleFormControlInput1" class="form-label">Login</label>
+		<input class="form-control" maxlength="50" type="text" placeholder="" value="dr_pepper" aria-label="default input example">
+	</div>
+	<div class="mb-3">
+		<label for="exampleFormControlInput1" class="form-label">Email</label>
+		<input class="form-control" maxlength="50" type="email" placeholder="" value="dr.pepper@mail.ru" aria-label="default input example">
+	</div>
+	<div class="mb-3">
+		<label for="exampleFormControlInput1" class="form-label">Nickname</label>
+		<input class="form-control" maxlength="50" type="text" placeholder="" value="Dr. Pepper" aria-label="default input example">
+	</div>
+
+	<div class="mb-3">
+		<label for="formFile" class="form-label">Upload new avatar</label>
+		<input class="form-control" type="file" id="formFile">
+	</div>
+
+	<div class="button">Save!</div>
+</div>
+{% endblock content %}
